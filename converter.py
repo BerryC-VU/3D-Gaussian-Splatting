@@ -223,10 +223,10 @@ class VideoToPLYConverter:
 def main():
     parser = argparse.ArgumentParser(description='Convert video to PLY file')
     parser.add_argument('-v', '--video_path', type=str, help='Path to the input video file', required=True)
-    parser.add_argument('-m', '--method', type=str, choices=['pycolmap', 'pytorch'], default='pycolmap',
-                        help='Conversion method to use (default: pycolmap)')
+    # parser.add_argument('-m', '--method', type=str, choices=['pycolmap', 'pytorch'], default='pycolmap',
+    #                     help='Conversion method to use (default: pycolmap)')
     parser.add_argument('-fps', '--frame_rate', help="Extraction frame rate from the video", required=False, type=float)
-    parser.add_argument('-ba', '--skip_ba', help="Skip incremental mapping and global bundle adjusement process", required=False, default=0, type=int)
+    parser.add_argument('-ba', '--skip_ba', help="Skip incremental mapping and global bundle adjustment process", required=False, default=0, type=int)
     
     args = parser.parse_args()
 
