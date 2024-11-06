@@ -188,7 +188,7 @@ class VideoToPLYConverter:
         parser2.add_argument('--port', type=int, default=6009)
         parser2.add_argument('--debug_from', type=int, default=-1)
         parser2.add_argument('--detect_anomaly', action='store_true', default=False)
-        parser2.add_argument("--save_iterations", nargs="+", type=int, default=[1_000])
+        parser2.add_argument("--save_iterations", nargs="+", type=int, default=[7_000, 30_000, 70_000])
         # parser2.add_argument("--save_iterations", nargs="+", type=int, default=[30_000])
         parser2.add_argument("--quiet", action="store_true")
         parser2.add_argument("--checkpoint_iterations", nargs="+", type=int, default=[])
@@ -204,11 +204,6 @@ class VideoToPLYConverter:
                  args2.start_checkpoint,
                  args2.debug_from,
                  args2.saved_ply_path)
-
-        # # Assuming the training process generates a .ply file, return its path
-        # result_path = os.path.join(dataset, "trained_model", "point_cloud.ply")
-
-        # return result_path
 
 
 def main():
@@ -227,8 +222,6 @@ def main():
     converter = VideoToPLYConverter(method=args.method)
     try:
         output_ply = converter.convert_video_to_ply(args.video_path, args.frame_rate, args.skip_ba)
-        # output_ply = converter.convert_video_to_ply(args.video_path, args.frame_rate)
-        # print(f"Conversion successful. PLY file created at: {output_ply}")
     except Exception as e:
         print(f"Error: {str(e)}")
 

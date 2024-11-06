@@ -17,6 +17,10 @@ from gaussian_renderer import render, network_gui
 from scene import Scene, GaussianModel
 from tqdm import tqdm
 
+# Configure memory management
+# torch.cuda.set_per_process_memory_fraction(0.9, 0)
+# torch.cuda.set_max_split_size_mb(128)
+
 
 def training(dataset, opt, pipe, saving_iterations, checkpoint_iterations, checkpoint, debug_from, ply_path):
     first_iter = 0
